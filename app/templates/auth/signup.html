@@ -2,11 +2,11 @@
 {% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
-<div class="signup" align="center">
+<div class="reg-pages">
     <div class="div">
         <div class="card signup-card">
             {{wtf.quick_form(signup_form)}}
-        </div>
+        </div><br>
         <div class="sign-in-text">
             <p>Already have an account? <a class="page-links" href="{{url_for('auth.login')}}">SignIn here</a></p>
         </div>

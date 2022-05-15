@@ -1,0 +1,80 @@
+/* 
+font-family: 'Cookie', cursive;
+font-family: 'Quicksand', sans-serif;
+*/
+
+/* General styling */
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.page-links{
+    color: #111111;
+    font-weight: bolder;
+}
+
+.page-links:hover{
+    font-size: larger;
+    color: #111111;
+}
+
+/* Navbar */
+ul,li{
+    list-style: none;
+}
+
+.navbar{
+    padding: 1vw;
+    background-color: #E5DCC3;
+}
+
+.navbar-collapse{
+    float: right;
+    padding-top: 1.5vh;
+}
+
+.navbar-brand{
+    font-family: 'Dancing Script', cursive;
+    text-decoration: none;
+    font-family: 'Cookie', cursive;
+    letter-spacing: 2px;
+    font-size:4rem;
+    padding: 1vw;
+    font-weight: 700;
+    color: #9A9483;;
+}
+
+.navbar-brand:hover{
+    font-family: 'Cookie', cursive;
+    font-size: 5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link{
+    text-decoration: none;
+    top: 1vh;
+    padding:1vw;
+    font-size: large;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    color:#9A9483;
+}
+
+.nav-link:hover{
+    text-decoration: none;
+    font-size: larger;
+    color: #111111;
+}
+
+.navbar-toggle{
+    background-color: #FCDEC0;
+}
+
+/* Sign up and sign in pages */
+.reg-pages{
+    background-color: #E5DCC3;
+    width: 40%;
+    padding: 4vh;
+    margin: auto;
+}
