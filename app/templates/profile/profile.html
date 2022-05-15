@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container profile-page">
+    <div class="row">
+        <!-- displaying  Username-->
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="display-user-profile">
+                <div class="profile-picture">
+                    {% if user.prof_pic %}
+                    <img src="{{url_for('static',filename=user.prof_pic)}}" alt="user-profile-pic"
+                        class="img-thumbnail profile-pic" id="prof-pic" title="Profile picture">
+                    {%else%}
+                    <p>No profile picture</p>
+                    {% endif %}
+                    <br><br>
+                    <div class="update-prof-pic" id="update-prof-pic">
+                        {% if user == current_user %}
+                        <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
+                            enctype="multipart/form-data">
+                            <input type="file" name="photo" class="form-control" required><span class="circle"></span>
+                            <input type="submit" class="btn">
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h3> {{user.username| capitalize}} </h3>
+                    <!--Displaying user bio-->
+                    {% if user.bio %}
+                    <p> {{user.bio}}</p>
+                    {%else%}
+                    <p> {{user.username| capitalize}} has no bio </p>
+                    {% endif %}
+                </div>
+                {% if user == current_user %}
+                <a class="page-links" href="{{url_for('main.update_profile',uname=user.username,userid=user.id)}}">Edit
+                    profile</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+        <!--Display profile photo-->
+        <div class="col-md-6 display-user-pitches">
+            <h2>My Pitches
+                <span class="new-pitch-btn">
+                    <a class="btn-primary"
+                        href="{{url_for('main.create_pitch',userid=current_user.id,uname=current_user.username)}}">
+                        NEW PITCH
+                    </a>
+                </span>
+            </h2><span class="circle"></span>
+            <div class="user-pitch">
+                {% if pitches %}
+                {% for pitch in pitches %}
+                <div class="card mb-3">
+                    <div class="">
+                        <div class="card-body">
+                            <p class="card-text">{{pitch.pitch}}</p>
+                            <p class="card-text"><small class="text-muted"></small></p>
+                            <p>
+                                {% if pitch.upvotes %}<span class="pitch-card-extras">Likes:
+                                    {{pitch.upvotes.count()}}</span>{% endif %}
+                                {% if pitch.downvotes %}<span class="pitch-card-extras">Dislikes:
+                                    {{pitch.downvotes.count()}}</span>{% endif %}
+                                {% if pitch.category %}<span class="pitch-card-extras">Category:
+                                    {{pitch.category}}</span>{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="pitch-separator" align="left">
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

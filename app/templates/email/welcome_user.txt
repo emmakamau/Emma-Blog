@@ -1,0 +1,9 @@
+Hello {{user.username}}
+Welcome to Pitch-Me
+
+Thank you for signing up. We would like to welcome you to the family.
+We cannot wait to receive great pitches from you and amazing comments
+as well.
+
+Happy Pitching.
+Pitch-Me
