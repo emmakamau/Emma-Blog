@@ -1,0 +1,12 @@
+{% extends 'bootstrap/base_blog.html' %}
+
+<!-- Styles block -->
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<script src="{{url_for('static',filename='js/index.js')}}"></script>
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}

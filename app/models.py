@@ -36,11 +36,19 @@ class User(UserMixin,db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+class Blog(db.Model):
+    id =db.Column(db.Integer, primary_key=True)
+    blog=db.Column(db.String())
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    user_name = db.Column(db.String,db.ForeignKey('user.username'))
+
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String())
     blog_id = db.Column(db.Integer,db.ForeignKey('blog.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    user_name = db.Column(db.String,db.ForeignKey('user.username'))
 
     def save_comment(self):
         db.session.add(self)

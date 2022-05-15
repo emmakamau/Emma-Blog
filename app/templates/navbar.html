@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-styles">
+    <a class="navbar-brand" id="navbar-brand" href="/">Pitch-Me</a>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/category/Tech">Tech<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/category/Sales">Sales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/category/Marketing">Marketing</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('main.profile',userid=current_user.id,uname=current_user.username)}}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('auth.signout')}}">Sign out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('auth.login')}}">Sign in</a>
+            </li>
+            {%endif%}
+        </ul>
+    </div>
+</nav>
