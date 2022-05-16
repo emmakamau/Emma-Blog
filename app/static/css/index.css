@@ -46,7 +46,27 @@ a:hover{
     text-decoration: none;
 }
 
+.page-link{
+    color: #111111;
+}
 
+.page-link:hover{
+    font-size: larger;
+    color: #111111;
+}
+
+.link-text{
+    font-size: 5vh;
+    font-weight: 900;
+    color: #111111;
+}
+
+.link-text:hover{
+    font-size: 5vh;
+    font-weight:bolder;
+    background-color: #E5DCC3;
+    color: #4d4d4d;
+}
 /* Navbar */
 ul,li{
     list-style: none;
