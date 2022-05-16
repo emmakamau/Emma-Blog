@@ -1,6 +1,9 @@
 {% extends 'base_blog.html' %}
 
 {% block content %}
+<div class="quote-display" align="center">
+    <p class="quote-quote">{{quotes.quote}} <span class="author-quote">by: {{quotes.author}}</span></p>
+</div>
 <div class="row blogs-display">
     {% for blog in lifestyle_blogs %}
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-card">

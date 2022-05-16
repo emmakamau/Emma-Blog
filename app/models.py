@@ -135,4 +135,8 @@ class Downvote(db.Model):
         downvotes = Downvote.query.order_by('id').all()
         return downvotes
 
-
+class Quote:
+    def __init__(self,author,id,quote):
+        self.id = id
+        self.author = author
+        self.quote = quote

@@ -86,26 +86,28 @@ ul,li{
 .homepage{
     background-image: url('assets/background.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:contain;
     margin: 0;
-    height: 100vh;
+    height: 85vh;
     color:black;
     font-weight: bold;
+    position: relative;
 }
 
 .intro-first{
     margin: auto 0;
-    float:right;
-    text-align: center;
+    text-align: right;
     width: 40%;
     font-size: 4rem;
-    padding-right: 6vw;
-    padding-top:17vh;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
 }
 
 .intro-next{
     font-family: 'Cookie', cursive;
-    font-size: 6rem;
+    font-size: 5rem;
     color:#111111;
 }
 
@@ -148,4 +150,18 @@ ul,li{
 
 .blog-others{
     padding: 0 1vw;
+}
+
+.author-quote{
+    font-family: 'Cookie', cursive;
+    font-size: large;
+}
+
+.quote-quote{
+    font-size: larger;
+}
+
+.quote-display{
+    width:60%;
+    margin: auto;
 }

@@ -10,6 +10,7 @@ from . import main
 from .forms import *
 from ..models import *
 from .. import db, photos
+from ..request import *
 
 # Views
 
@@ -117,9 +118,9 @@ def del_comment(id,blogid):
 @main.route('/category/<category>')
 def lifestyle_blogs(category):
    lifestyle_blogs= Blog.get_all_blogs_category(category)
-   
+   quotes = get_quotes()
    title='Lifestyle'
-   return render_template('lifestyle.html',lifestyle_blogs=lifestyle_blogs,title=title)
+   return render_template('lifestyle.html',lifestyle_blogs=lifestyle_blogs,title=title,quotes=quotes)
 
 # Upvote
 @main.route('/upvotes/<int:id>', methods=['GET', 'POST'])
