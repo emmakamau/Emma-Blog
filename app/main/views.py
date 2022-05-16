@@ -38,7 +38,6 @@ def del_blog(blogid,userid,username):
    Blog.query.filter(Blog.id == blogid).delete()
    db.session.commit()
    return redirect('/user/{user_id}/{user_name}'.format(user_id=userid,user_name=username))
-   # return redirect('/blog/{blog_id}'.format(blog_id=id))
 
 # Update user profile
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -61,16 +60,16 @@ def update_profile(uname):
    return render_template('profile/update-profile.html',form_update_prof=form_update_prof,title=title)
 
 # Update user profile picture
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@main.route('/user/<userid>/<uname>/update/pic',methods= ['POST'])
 @login_required
-def update_pic(uname):
+def update_pic(uname,userid):
     user = User.query.filter_by(username = uname).first()
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.prof_pic = path
         db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))
+    return redirect(url_for('main.profile',uname=uname,userid=user.id))
 
 # Blog form
 @main.route('/new-blog/<userid>/<uname>', methods=['GET','POST'])
@@ -89,8 +88,9 @@ def new_blog(userid,uname):
          path = f'photos/{filename}'
       new_blog = Blog(title=title,blog=blog,category=category,user_id=userid,blog_pic=path)
       new_blog.save_blog()
-      print(path)
+      
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
+   
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
 
 # Get particular blog

@@ -2,12 +2,14 @@
 
 {% block content %}
 <div class="quote-display" align="center">
-    <p class="quote-quote">{{quotes.quote}} <span class="author-quote">by: {{quotes.author}}</span></p>
+    <p class="quote-quote">{{quotes.quote}}</p>
+    <p class="author-quote">by: {{quotes.author}}</p>
 </div>
 <div class="row blogs-display">
     {% for blog in lifestyle_blogs %}
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-card">
-        <img src="" alt="{{ blog.title }}" class="img-responsive">
+        <img src="{{url_for('static',filename=blog.blog_pic)}}" alt="{{ blog.title }}" class="img-responsive">
+        <!-- src="{{url_for('static',filename=user.prof_pic)}}" -->
         <div class="card-body">
             <a href="/blog/{{blog.id}}" class="link-text">
                 {{ blog.title}}</a>

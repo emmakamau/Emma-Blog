@@ -33,6 +33,11 @@ body{
     padding:4vh;
 }
 
+.update-profile{
+    width: 50%;
+    margin: auto;
+}
+
 /* Navbar */
 ul,li{
     list-style: none;
