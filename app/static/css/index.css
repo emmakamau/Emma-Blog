@@ -25,7 +25,7 @@ ul,li{
 
 .navbar{
     padding: 1vw;
-    background-color: #E5DCC3;
+    margin: 0;
 }
 
 .navbar-collapse{
@@ -41,14 +41,14 @@ ul,li{
     font-size:4rem;
     padding: 1vw;
     font-weight: 700;
-    color: #9A9483;;
+    color: black;
 }
 
 .navbar-brand:hover{
     font-family: 'Cookie', cursive;
     font-size: 5rem;
     text-decoration: none;
-    color: black;
+    color: #9A9483;
 }
 
 .nav-link{
@@ -58,7 +58,7 @@ ul,li{
     font-size: large;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-    color:#9A9483;
+    color:#4d4d4d;
 }
 
 .nav-link:hover{
@@ -73,8 +73,35 @@ ul,li{
 
 /* Sign up and sign in pages */
 .reg-pages{
-    background-color: #E5DCC3;
+    background-color:#E5DCC3;
     width: 40%;
     padding: 4vh;
     margin: auto;
+}
+
+/* Homepage */
+.homepage{
+    background-image: url('assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+    color:black;
+    font-weight: bold;
+}
+
+.intro-first{
+    margin: auto 0;
+    float:right;
+    text-align: center;
+    width: 40%;
+    font-size: 4rem;
+    padding-right: 6vw;
+    padding-top:17vh;
+}
+
+.intro-next{
+    font-family: 'Cookie', cursive;
+    font-size: 6rem;
+    color:#111111;
 }

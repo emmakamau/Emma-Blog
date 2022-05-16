@@ -14,7 +14,7 @@ from .. import db, photos
 # Homepage/Landing page
 @main.route('/')
 def index(): 
-   
+   title="Homepage"
    return render_template('index.html',title=title)
 
 # View user profile
@@ -22,10 +22,10 @@ def index():
 def profile(userid,uname):
    user = User.query.filter_by(username = uname).first()
    title='User Profile'
-   pitches = Pitch.get_all_pitches_user(userid)
+   blogs = Blog.get_all_pitches_user(userid)
    if user is None:
       abort(404)
-   return render_template("profile/profile.html", title = title, pitches=pitches,user=user)
+   return render_template("profile/profile.html", title = title, blogs=blogs,user=user)
 
 # Update user profile
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
