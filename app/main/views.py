@@ -30,6 +30,15 @@ def profile(userid,uname):
       abort(404)
    return render_template("profile/profile.html", title = title, blogs=blogs,user=user)
 
+# Delete blog
+@main.route('/delete/blog/<blogid>/user/<userid>/<username>',methods=['GET', 'POST'])
+def del_blog(blogid,userid,username):
+   blog = Blog.query.get(blogid)
+   Blog.query.filter(Blog.id == blogid).delete()
+   db.session.commit()
+   return redirect('/user/{user_id}/{user_name}'.format(user_id=userid,user_name=username))
+   # return redirect('/blog/{blog_id}'.format(blog_id=id))
+
 # Update user profile
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
