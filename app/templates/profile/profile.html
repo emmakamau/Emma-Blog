@@ -58,7 +58,10 @@
                 <div class="card mb-3">
                     <div class="">
                         <div class="card-body">
-                            <p class="card-text">{{blog.blog|truncate(50)}}</p>
+                            {% if blog.title %}
+                            <h5 class="card-title">{{blog.title}}</h5>
+                            {% endif %}
+                            <p class="card-text">{{blog.blog|truncate(100)}}</p>
                             <p class="card-text"><small class="text-muted"></small></p>
                             <p>
                                 {% if blog.upvotes %}<span class="blog-card-extras">Likes:

@@ -68,9 +68,10 @@ def new_blog(userid,uname):
    user_name = User.query.filter_by(username=uname).first()
    new_blog_form = BlogForm()
    if new_blog_form.validate_on_submit():
+      title = new_blog_form.title.data
       blog = new_blog_form.blog.data
       category = new_blog_form.category.data
-      new_blog = Blog(blog=blog,category=category,user_id=userid)
+      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid)
       new_blog.save_blog()
       
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
