@@ -21,6 +21,18 @@ body{
     color: #111111;
 }
 
+.text-center{
+    text-align: center;
+}
+
+.display-blog-comments{
+    margin-top: 4vh;
+}
+
+.new-blog{
+    padding:4vh;
+}
+
 /* Navbar */
 ul,li{
     list-style: none;
@@ -71,7 +83,7 @@ ul,li{
 }
 
 .navbar-toggle{
-    background-color: #FCDEC0;
+    background-color: #E5DCC3;
 }
 
 /* Sign up and sign in pages */
@@ -86,12 +98,17 @@ ul,li{
 .homepage{
     background-image: url('assets/background.jpg');
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size:cover;
     margin: 0;
     height: 85vh;
     color:black;
     font-weight: bold;
     position: relative;
+}
+
+.blog-image{
+    background-image: url('assets/blogimg.jpg');
+    height: 60vh;
 }
 
 .intro-first{
@@ -164,4 +181,83 @@ ul,li{
 .quote-display{
     width:60%;
     margin: auto;
+}
+
+
+/* Media Queries */ 
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .homepage{
+        background-size:contain;
+        height: 100vh;
+    }
+    .intro-first{
+        text-align: center;
+        width: 80%;
+        top: 60%;
+        transform: translateY(-50%);
+        line-height: 2em;
+        background-color: #E5DCC3;
+        padding: 0 1vw;
+    }
+    .navbar-brand{
+        padding-top: 3vh;
+    }
+    .reg-pages{
+        width: 80%;
+        margin-top: 10vh;
+    }
+    .new-blog{
+        padding:6vh 4vh;
+    }
+    .update-profile{
+        padding-top: 6vh;
+    }
+    .display-individual-blog{
+        padding: 2vh;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 825px) {
+    .homepage{
+        background-size:contain;
+        height: 100vh;
+    }
+    .intro-first{
+        text-align: center;
+        width: 80%;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 2em;
+        background-color: #E5DCC3;
+        padding: 0 1vw;
+    }
+    .reg-pages{
+        width: 60%;
+        margin-top: 10vh;
+    }
+
+    .profile-pic{
+        width: 100%;
+        margin: auto;
+    }
+    .new-blog{
+        padding:6vh 4vh;
+    }
+    .display-individual-blog{
+        padding: 3vh;
+    }
+    .blog-image{
+        background-size: contain;
+    }
+    .new-blog-form{
+        margin-top: 2vh;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+   
 }
