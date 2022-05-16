@@ -17,6 +17,7 @@ from .. import db, photos
 @main.route('/')
 def index(): 
    title="Homepage"
+   
    return render_template('index.html',title=title)
 
 # View user profile
@@ -76,12 +77,19 @@ def new_blog(userid,uname):
       if 'blog_pic' in request.files:
          filename=photos.save(request.files['blog_pic'])
          path = f'photos/{filename}'
-         blog_pic = path
-      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid,blog_pic=blog_pic)
+      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid,blog_pic=path)
       new_blog.save_blog()
-      
+      print(path)
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
+
+# Lifestyle Blogs
+@main.route('/category/<category>')
+def lifestyle_blogs(category):
+   lifestyle_blogs= Blog.get_all_blogs_category(category)
+   print(category)
+   title='Lifestyle'
+   return render_template('lifestyle.html',lifestyle_blogs=lifestyle_blogs,title=title)
 
 # Upvote
 @main.route('/upvotes/<int:id>', methods=['GET', 'POST'])

@@ -6,6 +6,9 @@ font-family: 'Quicksand', sans-serif;
 /* General styling */
 body{
     font-family: 'Quicksand', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 .page-links{
@@ -134,3 +137,11 @@ ul,li{
 .blog-separator{
     background-color: #4d4d4d;
 }
+
+/* Blogs display */
+.blogs-display{
+    padding: 2vh 4vw;
+    background-color: #E5DCC3;
+    height: 100vh;
+}
+

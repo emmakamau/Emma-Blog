@@ -1,12 +1,14 @@
-{% macro displayBlogList(blog_list) %}
+{% macro displayBlogList(blogs) %}
 
-{% for movie in movie_list %}
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-card">
-    <img src="{{ blog.blog_pic }}" alt="{{ blog.title }} blog-image" class="img-responsive">
-    <div class="card-body">
-        <a href="/blog/{{blog.id}}" class="link-text">
-            {{ blog.title}}</a>
-        <p class="card-text">{{blog.blog|truncate(50)}}</p>
+{% for blog in blogs %}
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-card">
+        <img src="{{ blog.blog_pic }}" alt="{{ blog.title }} blog-image" class="img-responsive">
+        <div class="card-body">
+            <a href="/blog/{{blog.id}}" class="link-text">
+                {{ blog.title}}</a>
+            <p class="card-text">{{blog.blog|truncate(50)}}</p>
+        </div>
     </div>
 </div>
 {% endfor %}

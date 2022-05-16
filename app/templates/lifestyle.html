@@ -1,0 +1,16 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<div class="row blogs-display">
+    {% for blog in lifestyle_blogs %}
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blog-card">
+        <img src="" alt="{{ blog.title }}" class="img-responsive">
+        <div class="card-body">
+            <a href="/blog/{{blog.id}}" class="link-text">
+                {{ blog.title}}</a>
+            <p class="card-text">{{blog.blog|truncate(200)}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
