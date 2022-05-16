@@ -28,7 +28,7 @@
                     <div class="each-comment"> 
                         <p>{{comment.comment}}</p>
                         {% if current_user.is_authenticated %}
-                        <a href="/delete/comment/{{comment.id}}/blog/{{blog.id}}">Delete Comment</a>
+                        <a href="/delete/comment/{{comment.id}}/blog/{{blog.id}}" class="btn-primary">Delete Comment</a>
                         {% endif %}
                     </div>
                     

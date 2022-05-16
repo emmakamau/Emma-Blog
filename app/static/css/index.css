@@ -38,6 +38,15 @@ body{
     margin: auto;
 }
 
+.comments-display{
+    margin-top: 2vh;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+
 /* Navbar */
 ul,li{
     list-style: none;

@@ -94,6 +94,26 @@ def new_blog(userid,uname):
    
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
 
+# Edit blog
+@main.route('/edit-blog/<blogid>/<userid>/<uname>', methods=['GET','POST'])
+@login_required
+def edit_blog(blogid,userid,uname):
+   new_blog_form = BlogForm()
+   user = User.query.filter_by(id=userid).first()
+   user_name = User.query.filter_by(username=uname).first()
+   edit_post = db.session.query(Blog).filter(Blog.id==blogid).first()
+   if request.method == 'POST':
+      edit_title = new_blog_form.title.data
+      edit_blog = new_blog_form.blog.data
+
+      edit_post.title = edit_title 
+      edit_post.blog = edit_blog
+
+      db.session.commit()
+      return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
+   return render_template('new-blog.html',new_blog_form=new_blog_form)
+
+
 # Get particular blog
 @main.route('/blog/<id>', methods=['GET', 'POST'])
 def blog_item(id):
