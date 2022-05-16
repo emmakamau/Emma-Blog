@@ -1,3 +1,7 @@
+from operator import imod
+
+
+import re
 from flask_wtf import FlaskForm
 from wtforms import *
 from wtforms.validators import *
@@ -15,4 +19,5 @@ class BlogForm(FlaskForm):
     blog = TextAreaField('New blog', validators=[InputRequired(),Length(max=1000, message="Maximum of 1000 characters allowed")],
     render_kw={"placeholder":"Hey, this are my thoughts"})
     category = SelectField('Category',choices=[('Think Aloud','Think Aloud'),('Lifestyle','Lifestyle'),('Travel','Travel')],default='Think Aloud', validators=[InputRequired()])
+    blog_pic = FileField(u'Blog Image')
     submit = SubmitField('Submit')

@@ -2,7 +2,9 @@
 We define views that will be rendered on our pages
 '''
 from crypt import methods
+from fileinput import filename
 from flask import render_template,request,redirect,url_for,abort
+from werkzeug.utils import secure_filename
 from flask_login import *
 from . import main
 from .forms import *
@@ -71,7 +73,11 @@ def new_blog(userid,uname):
       title = new_blog_form.title.data
       blog = new_blog_form.blog.data
       category = new_blog_form.category.data
-      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid)
+      if 'blog_pic' in request.files:
+         filename=photos.save(request.files['blog_pic'])
+         path = f'photos/{filename}'
+         blog_pic = path
+      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid,blog_pic=blog_pic)
       new_blog.save_blog()
       
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
