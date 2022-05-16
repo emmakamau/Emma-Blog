@@ -1,9 +1,10 @@
 Hello {{user.username}}
-Welcome to Pitch-Me
+
+Welcome to Sincerely Emma
 
 Thank you for signing up. We would like to welcome you to the family.
-We cannot wait to receive great pitches from you and amazing comments
+I cannot wait to receive great blog posts from you and amazing comments
 as well.
 
-Happy Pitching.
-Pitch-Me
+Happy Blogging.
+Sincerely Emma
