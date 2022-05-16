@@ -69,7 +69,7 @@ def update_pic(uname,userid):
         path = f'photos/{filename}'
         user.prof_pic = path
         db.session.commit()
-    return redirect(url_for('main.profile',uname=uname,userid=user.id))
+    return redirect(url_for('main.profile',uname=uname,userid=userid))
 
 # Blog form
 @main.route('/new-blog/<userid>/<uname>', methods=['GET','POST'])
@@ -81,14 +81,15 @@ def new_blog(userid,uname):
    new_blog_form = BlogForm()
    if new_blog_form.validate_on_submit():
       title = new_blog_form.title.data
-      blog = new_blog_form.blog.data
+      myblog = new_blog_form.blog.data
       category = new_blog_form.category.data
       if 'blog_pic' in request.files:
          filename=photos.save(request.files['blog_pic'])
          path = f'photos/{filename}'
-      new_blog = Blog(title=title,blog=blog,category=category,user_id=userid,blog_pic=path)
+      new_blog = Blog(title=title,blog=myblog,category=category,user_id=userid,blog_pic=path)
       new_blog.save_blog()
-      
+      blog = Blog.query.filter_by(id=new_blog.id).first()
+      blog.blog_pic = path
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
    
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
