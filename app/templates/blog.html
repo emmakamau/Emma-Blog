@@ -1,4 +1,5 @@
 {% extends 'base_blog.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
 <div class="display-individual-blog">
@@ -11,12 +12,26 @@
             <p class="">
                 Category: {{blog.category}}
                 <span class="blog-votes">
-                    <a class="blog-others" href="">&#128077; {{blog.upvotes.count()}}</a>
-                    <a class="blog-others" href="">&#x1F44E; {{blog.downvotes.count()}}</a>
+                    <a class="blog-others" href="/upvotes/{{blog.id}}">&#128077; {{blog.upvotes.count()}}</a>
+                    <a class="blog-others" href="/downvotes/{{blog.id}}">&#x1F44E; {{blog.downvotes.count()}}</a>
                 </span>
             </p>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="comment-form">
+                <!-- <a href="/add/comment/{{blog.id}}" class="btn-primary">ADD COMMENT</a> -->
+                {{ wtf.quick_form(new_comment_form) }}
+            </div>
+            <div class="comments-display">
+                {% if comments %}
+                    {% for comment in comments %}
+                    <p>{{comment.comment}}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>No comments for this post.</p>
+                {% endif %}
+            </div>
+        </div>
         <div class="col-md-1"></div>
     </div>
 </div>

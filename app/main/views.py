@@ -84,16 +84,22 @@ def new_blog(userid,uname):
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
 
 # Get particular blog
-@main.route('/blog/<id>')
+@main.route('/blog/<id>', methods=['GET', 'POST'])
 def blog_item(id):
+   new_comment_form = CommentForm()
    blog = Blog.get_blog(id)
-   return render_template('blog.html', blog=blog)
+   comments = Comment.get_comment(id)
+   if new_comment_form.validate_on_submit and new_comment_form.comment.data != None:
+      new_comment = Comment(comment=new_comment_form.comment.data, blog_id=id, user_id=current_user.id)
+      new_comment.save_comment()
+      return redirect('/blog/{blog_id}'.format(blog_id=id))
+   return render_template('blog.html', blog=blog,comments=comments,new_comment_form=new_comment_form)
 
 # Lifestyle Blogs
 @main.route('/category/<category>')
 def lifestyle_blogs(category):
    lifestyle_blogs= Blog.get_all_blogs_category(category)
-   print(category)
+   
    title='Lifestyle'
    return render_template('lifestyle.html',lifestyle_blogs=lifestyle_blogs,title=title)
 
@@ -101,16 +107,20 @@ def lifestyle_blogs(category):
 @main.route('/upvotes/<int:id>', methods=['GET', 'POST'])
 @login_required
 def upvote(id):
-   blog = blog.query.get(id)
+   blog = Blog.query.get(id)
    new_vote = Upvote(blog = blog, upvote = 1, user_id = current_user.id)
    new_vote.save_upvote()
-   return redirect('/blog/comments/{blog_id}'.format(blog_id=id))
+   return redirect('/blog/{blog_id}'.format(blog_id=id))
 
 # Downvote
 @main.route('/downvotes/<int:id>', methods=['GET', 'POST'])
 @login_required
 def downvote(id):
-   blog = blog.query.get(id)
+   blog = Blog.query.get(id)
    new_downvote = Downvote(blog = blog,downvote = 1, user_id=current_user.id)
    new_downvote.save_downvote()
-   return redirect('/blog/comments/{blog_id}'.format(blog_id=id))
+   return redirect('/blog/{blog_id}'.format(blog_id=id))
+
+
+
+
