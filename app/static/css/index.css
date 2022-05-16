@@ -105,3 +105,32 @@ ul,li{
     font-size: 6rem;
     color:#111111;
 }
+
+/* Profile page */
+.new-blog-btn{
+    float: right;
+}
+
+.profile-pic{
+    border-radius: 50%;
+    size: smaller;
+}
+
+.profile-page{
+    background-color: #E5DCC3;
+    padding: 2vh;
+}
+
+.btn-primary{
+    background-color: #9A9483 !important;
+    font-weight: bolder;
+    padding: 1vh;
+}
+
+.user-blog{
+    margin-top: 4vh;
+}
+
+.blog-separator{
+    background-color: #4d4d4d;
+}

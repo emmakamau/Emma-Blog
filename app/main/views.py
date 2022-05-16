@@ -60,7 +60,7 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 # Blog form
-@main.route('/create-pitch/<userid>/<uname>', methods=['GET','POST'])
+@main.route('/new-blog/<userid>/<uname>', methods=['GET','POST'])
 @login_required
 def new_blog(userid,uname):
    title='New Blog'
@@ -68,10 +68,28 @@ def new_blog(userid,uname):
    user_name = User.query.filter_by(username=uname).first()
    new_blog_form = BlogForm()
    if new_blog_form.validate_on_submit():
-      blog = new_blog_form.pitch.data
+      blog = new_blog_form.blog.data
       category = new_blog_form.category.data
       new_blog = Blog(blog=blog,category=category,user_id=userid)
       new_blog.save_blog()
       
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
+
+# Upvote
+@main.route('/upvotes/<int:id>', methods=['GET', 'POST'])
+@login_required
+def upvote(id):
+   blog = blog.query.get(id)
+   new_vote = Upvote(blog = blog, upvote = 1, user_id = current_user.id)
+   new_vote.save_upvote()
+   return redirect('/blog/comments/{blog_id}'.format(blog_id=id))
+
+# Downvote
+@main.route('/downvotes/<int:id>', methods=['GET', 'POST'])
+@login_required
+def downvote(id):
+   blog = blog.query.get(id)
+   new_downvote = Downvote(blog = blog,downvote = 1, user_id=current_user.id)
+   new_downvote.save_downvote()
+   return redirect('/blog/comments/{blog_id}'.format(blog_id=id))

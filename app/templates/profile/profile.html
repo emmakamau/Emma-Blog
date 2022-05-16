@@ -46,7 +46,7 @@
         <div class="col-md-6 display-user-blogs">
             <h2>My Blog Posts
                 <span class="new-blog-btn">
-                    <a class="btn-primary"
+                    <a class="btn-primary new-blog-btn"
                         href="{{url_for('main.new_blog',userid=current_user.id,uname=current_user.username)}}">
                         NEW BLOG
                     </a>
@@ -58,7 +58,7 @@
                 <div class="card mb-3">
                     <div class="">
                         <div class="card-body">
-                            <p class="card-text">{{blog.blog}}</p>
+                            <p class="card-text">{{blog.blog|truncate(50)}}</p>
                             <p class="card-text"><small class="text-muted"></small></p>
                             <p>
                                 {% if blog.upvotes %}<span class="blog-card-extras">Likes:
@@ -69,6 +69,9 @@
                                     {{blog.category}}</span>{% endif %}
                             </p>
                         </div>
+                    </div>
+                    <div class="">
+                        <span><a href="" class="btn-primary">Edit</a><a href="" class="btn-danger">Delete</a></span>
                     </div>
                 </div>
                 <hr class="blog-separator" align="left">
