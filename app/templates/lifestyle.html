@@ -8,7 +8,9 @@
         <div class="card-body">
             <a href="/blog/{{blog.id}}" class="link-text">
                 {{ blog.title}}</a>
-            <p class="card-text">{{blog.blog|truncate(200)}}</p>
+            <p class="card-text">
+                {{blog.blog|truncate(200)}} <a href="/blog/{{blog.id}}">View more</a>
+            </p>
         </div>
     </div>
     {% endfor %}

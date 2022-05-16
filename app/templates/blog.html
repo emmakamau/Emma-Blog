@@ -1,0 +1,23 @@
+{% extends 'base_blog.html' %}
+
+{% block content %}
+<div class="display-individual-blog">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <img src="" alt="blog-img" class="blog-img">
+            <h3 class="blog-title">{{blog.title}}</h3>
+            <p class="blog-story">{{blog.blog}}</p>
+            <p class="">
+                Category: {{blog.category}}
+                <span class="blog-votes">
+                    <a class="blog-others" href="">&#128077; {{blog.upvotes.count()}}</a>
+                    <a class="blog-others" href="">&#x1F44E; {{blog.downvotes.count()}}</a>
+                </span>
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+{% endblock %}

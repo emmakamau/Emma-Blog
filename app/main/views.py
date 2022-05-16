@@ -83,6 +83,12 @@ def new_blog(userid,uname):
       return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
    return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)
 
+# Get particular blog
+@main.route('/blog/<id>')
+def blog_item(id):
+   blog = Blog.get_blog(id)
+   return render_template('blog.html', blog=blog)
+
 # Lifestyle Blogs
 @main.route('/category/<category>')
 def lifestyle_blogs(category):

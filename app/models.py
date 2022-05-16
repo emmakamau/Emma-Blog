@@ -70,9 +70,9 @@ class Blog(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_blogs():
-        blogs = Blog.query.all()
-        return blogs
+    def get_blog(cls,id):
+        blog = Blog.query.get(id)
+        return blog
 
     @classmethod
     def get_all_blogs_user(cls,id):
