@@ -43,35 +43,35 @@
         <div class="col-md-1"></div>
 
         <!--Display profile photo-->
-        <div class="col-md-6 display-user-pitches">
-            <h2>My Pitches
-                <span class="new-pitch-btn">
+        <div class="col-md-6 display-user-blogs">
+            <h2>My Blog Posts
+                <span class="new-blog-btn">
                     <a class="btn-primary"
                         href="{{url_for('main.new_blog',userid=current_user.id,uname=current_user.username)}}">
                         NEW BLOG
                     </a>
                 </span>
             </h2><span class="circle"></span>
-            <div class="user-pitch">
-                {% if pitches %}
-                {% for pitch in pitches %}
+            <div class="user-blog">
+                {% if blogs %}
+                {% for blog in blogs %}
                 <div class="card mb-3">
                     <div class="">
                         <div class="card-body">
-                            <p class="card-text">{{pitch.pitch}}</p>
+                            <p class="card-text">{{blog.blog}}</p>
                             <p class="card-text"><small class="text-muted"></small></p>
                             <p>
-                                {% if pitch.upvotes %}<span class="pitch-card-extras">Likes:
-                                    {{pitch.upvotes.count()}}</span>{% endif %}
-                                {% if pitch.downvotes %}<span class="pitch-card-extras">Dislikes:
-                                    {{pitch.downvotes.count()}}</span>{% endif %}
-                                {% if pitch.category %}<span class="pitch-card-extras">Category:
-                                    {{pitch.category}}</span>{% endif %}
+                                {% if blog.upvotes %}<span class="blog-card-extras">Likes:
+                                    {{blog.upvotes.count()}}</span>{% endif %}
+                                {% if blog.downvotes %}<span class="blog-card-extras">Dislikes:
+                                    {{blog.downvotes.count()}}</span>{% endif %}
+                                {% if blog.category %}<span class="blog-card-extras">Category:
+                                    {{blog.category}}</span>{% endif %}
                             </p>
                         </div>
                     </div>
                 </div>
-                <hr class="pitch-separator" align="left">
+                <hr class="blog-separator" align="left">
                 {% endfor %}
                 {% endif %}
             </div>
