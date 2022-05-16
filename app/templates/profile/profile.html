@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_blog.html' %}
 
 {% block content %}
 <div class="container profile-page">
@@ -47,8 +47,8 @@
             <h2>My Pitches
                 <span class="new-pitch-btn">
                     <a class="btn-primary"
-                        href="{{url_for('main.create_pitch',userid=current_user.id,uname=current_user.username)}}">
-                        NEW PITCH
+                        href="{{url_for('main.new_blog',userid=current_user.id,uname=current_user.username)}}">
+                        NEW BLOG
                     </a>
                 </span>
             </h2><span class="circle"></span>

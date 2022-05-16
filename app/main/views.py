@@ -22,7 +22,7 @@ def index():
 def profile(userid,uname):
    user = User.query.filter_by(username = uname).first()
    title='User Profile'
-   blogs = Blog.get_all_pitches_user(userid)
+   blogs = Blog.get_all_blogs_user(userid)
    if user is None:
       abort(404)
    return render_template("profile/profile.html", title = title, blogs=blogs,user=user)
@@ -59,3 +59,19 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
+# Blog form
+@main.route('/create-pitch/<userid>/<uname>', methods=['GET','POST'])
+@login_required
+def new_blog(userid,uname):
+   title='New Blog'
+   user = User.query.filter_by(id=userid).first()
+   user_name = User.query.filter_by(username=uname).first()
+   new_blog_form = BlogForm()
+   if new_blog_form.validate_on_submit():
+      blog = new_blog_form.pitch.data
+      category = new_blog_form.category.data
+      new_blog = Blog(blog=blog,category=category,user_id=userid)
+      new_blog.save_blog()
+      
+      return redirect(url_for('.profile',userid=user.id,uname=user_name.username))
+   return render_template('new-blog.html',new_blog_form=new_blog_form,title=title)

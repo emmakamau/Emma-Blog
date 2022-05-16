@@ -3,7 +3,7 @@ import os
 
 class Config:
     password = os.environ.get('SQL_PASSWORD')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:GenZ|0420@localhost/emmablog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:GenZ|0420@localhost/blog'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
@@ -24,7 +24,7 @@ class DevConfig(Config):
 
 class TestConfig(Config):
     password = os.environ.get('SQL_PASSWORD')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:GenZ|0420@localhost/emmablog_test'
+    #SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:GenZ|0420@localhost/emmablog_test'
     pass
 
 config_options = {

@@ -36,19 +36,11 @@ class User(UserMixin,db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class Blog(db.Model):
-    id =db.Column(db.Integer, primary_key=True)
-    blog=db.Column(db.String())
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    user_name = db.Column(db.String,db.ForeignKey('user.username'))
-
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String())
     blog_id = db.Column(db.Integer,db.ForeignKey('blog.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-    user_name = db.Column(db.String,db.ForeignKey('user.username'))
 
     def save_comment(self):
         db.session.add(self)
@@ -61,6 +53,38 @@ class Comment(db.Model):
 
     def __refr__(self):
         return f'User{self.comment}'
+
+class Blog(db.Model):
+    id =db.Column(db.Integer, primary_key=True)
+    blog = db.Column(db.String())
+    category = db.Column(db.String())
+    blog_pic = db.Column(db.String())
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    upvotes = db.relationship('Upvote', backref='blog', lazy='dynamic')
+    downvotes = db.relationship('Downvote', backref='blog', lazy='dynamic')
+    comment_id =  db.relationship('Comment', backref='blog', lazy='dynamic')
+
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_blogs(cls,id):
+        blogs = Blog.query.all()
+        return blogs
+
+    @classmethod
+    def get_all_blogs_user(cls,id):
+        blogs = Blog.query.filter_by(user_id=id)
+        return blogs
+
+    @classmethod
+    def get_all_blogs_category(cls,category):
+        blogs = Blog.query.filter_by(category=category)
+        return blogs
+
+    def __refr__(self):
+        return f'User{self.id}'
    
 class Upvote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
