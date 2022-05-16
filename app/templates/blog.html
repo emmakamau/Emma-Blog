@@ -25,7 +25,13 @@
             <div class="comments-display">
                 {% if comments %}
                     {% for comment in comments %}
-                    <p>{{comment.comment}}</p>
+                    <div class="each-comment"> 
+                        <p>{{comment.comment}}</p>
+                        {% if current_user %}
+                        <a href="/delete/comment/{{comment.id}}/blog/{{blog.id}}">Delete Comment</a>
+                        {% endif %}
+                    </div>
+                    
                     {% endfor %}
                 {% else %}
                     <p>No comments for this post.</p>

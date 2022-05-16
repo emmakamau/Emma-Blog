@@ -92,8 +92,17 @@ def blog_item(id):
    if new_comment_form.validate_on_submit and new_comment_form.comment.data != None:
       new_comment = Comment(comment=new_comment_form.comment.data, blog_id=id, user_id=current_user.id)
       new_comment.save_comment()
+
       return redirect('/blog/{blog_id}'.format(blog_id=id))
    return render_template('blog.html', blog=blog,comments=comments,new_comment_form=new_comment_form)
+
+# Delete comment 
+@main.route('/delete/comment/<id>/blog/<blogid>',methods=['GET', 'POST'])
+def del_comment(id,blogid):
+   blog = Blog.query.get(blogid)
+   Comment.query.filter(Comment.id == id).delete()
+   db.session.commit()
+   return redirect('/blog/{blog_id}'.format(blog_id=blogid))
 
 # Lifestyle Blogs
 @main.route('/category/<category>')
