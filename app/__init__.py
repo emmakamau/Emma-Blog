@@ -4,12 +4,14 @@ from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_ckeditor import CKEditor
 from flask_uploads import configure_uploads,UploadSet,IMAGES
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
 mail = Mail()
+editor = CKEditor()
 
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -30,6 +32,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
+    editor.init_app(app)
 
     # Register auth blueprint instance
     from .auth import auth as auth_blueprint

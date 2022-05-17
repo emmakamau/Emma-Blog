@@ -7,6 +7,8 @@
         <div class="col-md-6 blog-image"></div>
         <div class="col-md-6 new-blog-form">
             {{ wtf.quick_form(new_blog_form) }}
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='blog') }}
         </div>
     </div>
 </div>

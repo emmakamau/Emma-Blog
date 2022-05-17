@@ -67,6 +67,11 @@ a:hover{
     background-color: #E5DCC3;
     color: #4d4d4d;
 }
+
+.each-comment{
+    margin-top: 2vh;
+}
+
 /* Navbar */
 ul,li{
     list-style: none;
@@ -142,7 +147,7 @@ ul,li{
 
 .blog-image{
     background-image: url('assets/blogimg.jpg');
-    height: 60vh;
+    height: 100vh;
 }
 
 .intro-first{

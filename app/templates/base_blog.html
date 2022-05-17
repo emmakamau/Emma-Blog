@@ -5,6 +5,10 @@
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 <script src="{{url_for('static',filename='js/index.js')}}"></script>
+
+<!-- <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script> -->
+<script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Quicksand:wght@300&display=swap" rel="stylesheet">
