@@ -24,7 +24,7 @@ class DevConfig(Config):
 
 class TestConfig(Config):
     password = os.environ.get('SQL_PASSWORD')
-    #SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:{}@localhost/emmablog_test'.format(password)
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:GenZ|0420@localhost/blog_test'
     pass
 
 config_options = {
